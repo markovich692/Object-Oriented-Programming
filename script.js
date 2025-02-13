@@ -17,9 +17,16 @@ const steve = new Person('Steve', 1998);
 // {} is linked to a prototype
 // function automatically returns {} from the beginning
 
-Person.prototype.greet = function () {
-  console.log('called');
-  return `Hello, my name is ${this.name}`;
+Person.prototype.calcAge = function () {
+  return 2038 - this.birthYear;
 };
 
-console.log(Person.prototype);
+// console.log(Person.prototype);
+
+// console.log(marc.__proto__);
+
+//Object.prototype
+console.log(marc.__proto__.__proto__);
+
+//The prototype of the object prototype
+console.log(marc.__proto__.__proto__.__proto__);
