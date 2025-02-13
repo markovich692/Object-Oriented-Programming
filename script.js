@@ -53,32 +53,56 @@ arr.unique();
 // § Data car 1: 'BMW' going at 120 km/h
 // § Data car 2: 'Mercedes' going at 95 km/h
 
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-};
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
 
 //Implements the accelerate method
-Car.prototype.accelerate = function () {
-  this.speed = this.speed + 10;
-  console.log(`${this.make} going at ${this.speed}km/h`);
-};
+// Car.prototype.accelerate = function () {
+//   this.speed = this.speed + 10;
+//   console.log(`${this.make} going at ${this.speed}km/h`);
+// };
 
 //Implements the brake method
-Car.prototype.brake = function () {
-  this.speed = this.speed - 5;
-  console.log(`${this.make} going at ${this.speed}km/h`);
+// Car.prototype.brake = function () {
+//   this.speed = this.speed - 5;
+//   console.log(`${this.make} going at ${this.speed}km/h`);
+// };
+
+// const car1 = new Car('BMW', 120);
+// const car2 = new Car('Mercedes', 95);
+
+// car1.accelerate();
+// car1.accelerate();
+// car1.brake();
+// car1.brake();
+
+// car2.accelerate();
+// car2.accelerate();
+// car2.brake();
+
+//Class declaration
+// class PersonCl {
+//   constructor(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   }
+
+//   calcAge = function () {
+//     console.log(2037 - this.birthYear);
+//   };
+// }
+
+// const jessica = new PersonCl('Jessica', 1996);
+// console.log(jessica);
+
+const account = {
+  owner: 'Jonas',
+  movements: [200, 150, 20, 400],
+  get latest() {
+    console.log(this.movements.slice(-1).at(0));
+  },
 };
 
-const car1 = new Car('BMW', 120);
-const car2 = new Car('Mercedes', 95);
-
-car1.accelerate();
-car1.accelerate();
-car1.brake();
-car1.brake();
-car1.brake();
-car1.brake();
-
-car2.accelerate();
-car2.accelerate();
+account.latest;
