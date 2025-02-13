@@ -42,3 +42,32 @@ Array.prototype.unique = function () {
 arr.unique();
 
 //CHALLENGE 1
+// Your tasks:
+//1. Use a constructor function to implement a 'Car'. A car has a 'make' and a 'speed' property.
+//The 'speed' property is the current speed of the car in km/h
+//2. Implement an 'accelerate' method that will increase the car's speed by10, and log the new speed
+//to the console
+//3. Implement a 'brake' method that will decrease the car's speed by 5,and log the new speed to the console
+//4. Create2'Car'objectsandexperimentwithcalling'accelerate'and 'brake' multiple times on each of them
+// Test data:
+// § Data car 1: 'BMW' going at 120 km/h
+// § Data car 2: 'Mercedes' going at 95 km/h
+
+const Car = function (speed) {
+  // this.make = make;
+  this.speed = speed;
+};
+
+//Implements the accelerate method
+Car.prototype.accelerate = function () {
+  console.log(`${this.speed + 10}km/h`);
+};
+
+//Implements the brake method
+Car.prototype.brake = function () {
+  console.log(`${this.speed - 5}km/h`);
+};
+
+const myCar = new Car(20);
+
+myCar.accelerate();
