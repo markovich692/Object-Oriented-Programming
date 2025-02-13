@@ -25,8 +25,20 @@ Person.prototype.calcAge = function () {
 
 // console.log(marc.__proto__);
 
-//Object.prototype
-console.log(marc.__proto__.__proto__);
+//Object.prototype(top of prototype chain)
+// console.log(marc.__proto__.__proto__);
+// console.log(marc.__proto__.__proto__.__proto__);
 
-//The prototype of the object prototype
-console.log(marc.__proto__.__proto__.__proto__);
+// console.dir(arr.__proto__);
+
+const arr = [1, 2, 3, 3, 5, 5, 4, 4, 5];
+
+// console.log(Array.prototype);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+arr.unique();
+
+//CHALLENGE 1
