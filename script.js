@@ -48,26 +48,37 @@ arr.unique();
 //2. Implement an 'accelerate' method that will increase the car's speed by10, and log the new speed
 //to the console
 //3. Implement a 'brake' method that will decrease the car's speed by 5,and log the new speed to the console
-//4. Create2'Car'objectsandexperimentwithcalling'accelerate'and 'brake' multiple times on each of them
+//4. Create2 'Car' objects and experiment with calling 'accelerate' and 'brake' multiple times on each of them
 // Test data:
 // § Data car 1: 'BMW' going at 120 km/h
 // § Data car 2: 'Mercedes' going at 95 km/h
 
-const Car = function (speed) {
-  // this.make = make;
+const Car = function (make, speed) {
+  this.make = make;
   this.speed = speed;
 };
 
 //Implements the accelerate method
 Car.prototype.accelerate = function () {
-  console.log(`${this.speed + 10}km/h`);
+  this.speed = this.speed + 10;
+  console.log(`${this.make} going at ${this.speed}km/h`);
 };
 
 //Implements the brake method
 Car.prototype.brake = function () {
-  console.log(`${this.speed - 5}km/h`);
+  this.speed = this.speed - 5;
+  console.log(`${this.make} going at ${this.speed}km/h`);
 };
 
-const myCar = new Car(20);
+const car1 = new Car('BMW', 120);
+const car2 = new Car('Mercedes', 95);
 
-myCar.accelerate();
+car1.accelerate();
+car1.accelerate();
+car1.brake();
+car1.brake();
+car1.brake();
+car1.brake();
+
+car2.accelerate();
+car2.accelerate();
