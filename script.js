@@ -83,26 +83,63 @@ arr.unique();
 // car2.brake();
 
 //Class declaration
-// class PersonCl {
-//   constructor(firstName, birthYear) {
-//     this.firstName = firstName;
-//     this.birthYear = birthYear;
-//   }
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
 
-//   calcAge = function () {
-//     console.log(2037 - this.birthYear);
-//   };
-// }
+  calcAge = function () {
+    console.log(2037 - this.birthYear);
+  };
 
-// const jessica = new PersonCl('Jessica', 1996);
-// console.log(jessica);
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert('Try again');
+  }
+}
+
+const jessica = new PersonCl('Jessica Lyn', 1996);
+console.log(jessica);
 
 const account = {
   owner: 'Jonas',
   movements: [200, 150, 20, 400],
   get latest() {
-    console.log(this.movements.slice(-1).at(0));
+    return this.movements.slice(-1).at(0);
+  },
+
+  set latest(mov) {
+    return this.movements.push(mov);
   },
 };
 
-account.latest;
+account.latest = 50;
+console.log(account);
+
+// console.log([1, 1, 3].includes(3), 'marc'.includes('b'));
+
+class Student {
+  constructor(name, age, drive) {
+    this.name = name;
+    this.age = age;
+    this.drive = drive;
+  }
+
+  set drive(isDriving) {
+    if (isDriving === true) return (this._drive = isDriving);
+    else return (this._drive = false);
+  }
+
+  get drive() {
+    return this._drive;
+  }
+}
+
+const nicholas = new Student('Nicholas', 18, false);
+console.log(nicholas);
+console.log(nicholas._drive);
