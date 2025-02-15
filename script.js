@@ -130,7 +130,7 @@ class Driver {
     this.licenseType = licenseType;
   }
 
-  //The setter will check fot the licenseType property and validate it
+  //The setter will check fot the licenseType property and validates it
   set licenseType(licenseType) {
     if (licenseType === 'A' || licenseType === 'B' || licenseType === 'C')
       return (this._licenseType = licenseType);
@@ -140,9 +140,18 @@ class Driver {
   get licenseType() {
     return this._licenseType;
   }
+
+  //Static method
+  static greet() {
+    console.log('Hello there!');
+  }
 }
 
+Driver.greet();
+
 const nicholas = new Driver('Nicholas', 18, 'A');
+
+// nicholas.greet();
 // console.log(nicholas);
 //output: {
 //   "name": "Nicholas",
@@ -158,16 +167,16 @@ const nicholas = new Driver('Nicholas', 18, 'A');
 // }
 
 //STATIC METHOD
-const Test = function (fName, age) {
-  this.fName = fName;
-  this.age = age;
-};
+// const Test = function (fName, age) {
+//   this.fName = fName;
+//   this.age = age;
+// };
 
-const nneka = new Test('Nneka', 21);
+// const nneka = new Test('Nneka', 21);
 
-Test.greetings = function () {
-  console.log('Hello, world!');
-};
+// Test.greetings = function () {
+//   console.log('Hello, world!');
+// };
 
-Test.greetings();
-nneka.greetings();
+// Test.greetings();
+// nneka.greetings();
