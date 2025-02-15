@@ -104,7 +104,7 @@ class PersonCl {
 }
 
 const jessica = new PersonCl('Jessica Lyn', 1996);
-console.log(jessica);
+// console.log(jessica);
 
 const account = {
   owner: 'Jonas',
@@ -119,27 +119,55 @@ const account = {
 };
 
 account.latest = 50;
-console.log(account);
+// console.log(account);
 
 // console.log([1, 1, 3].includes(3), 'marc'.includes('b'));
 
-class Student {
-  constructor(name, age, drive) {
+class Driver {
+  constructor(name, age, licenseType) {
     this.name = name;
     this.age = age;
-    this.drive = drive;
+    this.licenseType = licenseType;
   }
 
-  set drive(isDriving) {
-    if (isDriving === true) return (this._drive = isDriving);
-    else return (this._drive = false);
+  //The setter will check fot the licenseType property and validate it
+  set licenseType(licenseType) {
+    if (licenseType === 'A' || licenseType === 'B' || licenseType === 'C')
+      return (this._licenseType = licenseType);
+    else alert('Licence type not valid, please try again!');
   }
 
-  get drive() {
-    return this._drive;
+  get licenseType() {
+    return this._licenseType;
   }
 }
 
-const nicholas = new Student('Nicholas', 18, false);
-console.log(nicholas);
-console.log(nicholas._drive);
+const nicholas = new Driver('Nicholas', 18, 'A');
+// console.log(nicholas);
+//output: {
+//   "name": "Nicholas",
+//   "age": 18,
+//   "_licenseType": "A"
+// }
+
+// console.log(nicholas.licenseType);
+//output: A
+//Note that this output 'A' because of the
+// get licenseType() {
+//   return this._licenseType;
+// }
+
+//STATIC METHOD
+const Test = function (fName, age) {
+  this.fName = fName;
+  this.age = age;
+};
+
+const nneka = new Test('Nneka', 21);
+
+Test.greetings = function () {
+  console.log('Hello, world!');
+};
+
+Test.greetings();
+nneka.greetings();
