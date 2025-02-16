@@ -185,9 +185,13 @@ Test.greetings();
 // nneka.greetings();
 
 const PersonProto = {
-  calcAge: function () {
-    console.log(this);
+  calcAge() {
     console.log(2037 - this.birthYear);
+  },
+
+  init(name, birthYear) {
+    this.name = name;
+    this.birthYear = birthYear;
   },
 };
 
@@ -195,4 +199,10 @@ const steven = Object.create(PersonProto);
 
 steven.birthYear = 1997;
 
-steven.calcAge();
+// console.log(steven.__proto__);
+
+const jerry = Object.create(PersonProto);
+
+jerry.init('Jerry', 1994);
+
+console.log(jerry);
