@@ -123,7 +123,7 @@ account.latest = 50;
 
 // console.log([1, 1, 3].includes(3), 'marc'.includes('b'));
 
-class Driver {
+const Driver = class {
   constructor(name, age, licenseType) {
     this.name = name;
     this.age = age;
@@ -137,15 +137,16 @@ class Driver {
     else alert('Licence type not valid, please try again!');
   }
 
+  //Instance method
   get licenseType() {
     return this._licenseType;
   }
 
   //Static method
   static greet() {
-    console.log('Hello there!');
+    // console.log('Hello there!');
   }
-}
+};
 
 Driver.greet();
 
@@ -166,17 +167,32 @@ const nicholas = new Driver('Nicholas', 18, 'A');
 //   return this._licenseType;
 // }
 
-//STATIC METHOD
-// const Test = function (fName, age) {
-//   this.fName = fName;
-//   this.age = age;
-// };
+//Building the Test constructor
+const Test = function (fName, age) {
+  this.fName = fName;
+  this.age = age;
+};
 
-// const nneka = new Test('Nneka', 21);
+//Creates the nneka object; instance of the Test constructor
+const nneka = new Test('Nneka', 21);
 
-// Test.greetings = function () {
-//   console.log('Hello, world!');
-// };
+//static method
+Test.greetings = function () {
+  // console.log('Hello, world!');
+};
 
-// Test.greetings();
+Test.greetings();
 // nneka.greetings();
+
+const PersonProto = {
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.birthYear);
+  },
+};
+
+const steven = Object.create(PersonProto);
+
+steven.birthYear = 1997;
+
+steven.calcAge();
