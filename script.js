@@ -351,7 +351,7 @@ const EmployeeCl = class {
   }
   //static methods
   static dive() {
-    console.log(`Employee dives.`);
+    // console.log(`Employee dives.`);
   }
 };
 
@@ -406,8 +406,8 @@ Worker.prototype.calcAge = function () {
   console.log(2037 - this.age);
 };
 
-console.log(Worker.prototype);
-console.log(Clerk.prototype.__proto__);
+// console.log(Worker.prototype);
+// console.log(Clerk.prototype.__proto__);
 // console.log(Clerk.prototype.__proto__ === Worker.prototype);
 
 //Challenge 3
@@ -433,17 +433,32 @@ const Car = function (make, speed) {
 const EV = function (make, speed, charge) {
   Car.call(this, make, speed);
 
-  this.charge = `${charge}%`;
+  this.charge = `${charge}`;
 };
+
+//Links the child EV class to the parent Car class
+EV.prototype = Object.create(Car.prototype);
 
 const volvo = new EV('Volvo', 120, 26);
 
-console.log(volvo);
-
-EV.prototype.chargeBattery = function (chargeTo) {
-  this.charge = `${chargeTo}%`;
+Car.prototype.chargeBattery = function (chargeTo) {
+  this.charge = `${chargeTo}`;
 };
 
-volvo.chargeBattery(40);
+// console.log(EV.prototype.__proto__ === Car.prototype);
 
 console.log(volvo);
+
+Car.prototype.accelerate = function () {
+  this.speed = this.speed + 20;
+  this.charge = this.charge - 1;
+  console.log(
+    `${this.make} going at ${this.speed} with a charge of ${this.charge}%.`
+  );
+};
+
+volvo.chargeBattery(50);
+console.log(volvo);
+
+volvo.accelerate();
+volvo.accelerate();
