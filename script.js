@@ -424,3 +424,26 @@ console.log(Clerk.prototype.__proto__);
 // Test data:
 // § Data car 1: 'Tesla' going at 120 km/h, with a charge of 23%
 // GOOD LUCK 😀
+
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+
+  this.charge = `${charge}%`;
+};
+
+const volvo = new EV('Volvo', 120, 26);
+
+console.log(volvo);
+
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = `${chargeTo}%`;
+};
+
+volvo.chargeBattery(40);
+
+console.log(volvo);
