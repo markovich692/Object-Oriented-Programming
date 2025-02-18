@@ -1,25 +1,25 @@
 'use strict';
 
-const Person = function (firstName, birthYear) {
-  //Instance Properties
-  this.name = firstName;
-  this.birthYear = birthYear;
-  //   this.greet = function () {
-  //     return `Hello, my name is ${this.name}`;
-  //   };
-};
+// const Person = function (firstName, birthYear) {
+//Instance Properties
+// this.name = firstName;
+// this.birthYear = birthYear;
+//   this.greet = function () {
+//     return `Hello, my name is ${this.name}`;
+//   };
+// };
 
-const marc = new Person('Marc', 1992);
-const steve = new Person('Steve', 1998);
+// const marc = new Person('Marc', 1992);
+// const steve = new Person('Steve', 1998);
 
 // New {} is created
 // function is called; this={}
 // {} is linked to a prototype
 // function automatically returns {} from the beginning
 
-Person.prototype.calcAge = function () {
-  return 2038 - this.birthYear;
-};
+// Person.prototype.calcAge = function () {
+//   return 2038 - this.birthYear;
+// };
 
 // console.log(Person.prototype);
 
@@ -186,9 +186,10 @@ Test.greetings();
 
 const PersonProto = {
   calcAge() {
-    console.log(2037 - this.birthYear);
+    return 2037 - this.birthYear;
   },
 
+  //To implement the name and birthYear properties of the Object we want to create
   init(name, birthYear) {
     this.name = name;
     this.birthYear = birthYear;
@@ -197,12 +198,96 @@ const PersonProto = {
 
 const steven = Object.create(PersonProto);
 
+//Sets the name and birthYear manually
+steven.name = 'Steven';
 steven.birthYear = 1997;
-
-// console.log(steven.__proto__);
+// steven.init('Steven', 1888);
+// console.log(steven);
 
 const jerry = Object.create(PersonProto);
 
+//Uses the init method to set the name and birthYear
 jerry.init('Jerry', 1994);
 
-console.log(jerry);
+// console.log(jerry);
+
+jerry.calcAge();
+
+// CHALLENGE 1
+// Your tasks:
+//1. Use a constructor function to implement a 'Car'. A car has a 'make' and a 'speed' property.
+//The 'speed' property is the current speed of the car in km/h
+//2. Implement an 'accelerate' method that will increase the car's speed by10, and log the new speed
+//to the console
+//3. Implement a 'brake' method that will decrease the car's speed by 5,and log the new speed to the console
+//4. Create2 'Car' objects and experiment with calling 'accelerate' and 'brake' multiple times on each of them
+// Test data:
+// § Data car 1: 'BMW' going at 120 km/h
+// § Data car 2: 'Mercedes' going at 95 km/h
+
+// Challenge #2
+// Your tasks:
+// 1. Re-create Challenge #1, but this time using an ES6 class (call it 'CarCl')
+// 2. Add a getter called 'speedUS' which returns the current speed in mi/h (divide by 1.6)
+// 3. Add a setter called 'speedUS' which sets the current speed in mi/h (but
+// converts it to km/h before storing the value, by multiplying the input by 1.6)
+// 4. Create a new car and experiment with the 'accelerate' and 'brake'
+// methods, and with the getter and setter.
+// Test data:
+// § Data car 1: 'Ford' going at 120 km/h
+
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  // Implements the accelerate method
+  accelerate() {
+    this.speed = this.speed + 10;
+    console.log(`${this.make} going at ${this.speed}km/h`);
+  }
+
+  //Implements the break property
+  brake() {
+    this.speed = this.speed - 5;
+    console.log(`${this.make} going at ${this.speed}km/h`);
+  }
+
+  //Getter that returns the speed in mi/h
+  get speedUS() {
+    console.log(this.speed / 1.6);
+  }
+
+  set speedUS(speed) {
+    //Converts the spped from US mi/h to Km/h and sets it
+    this.speed = speed * 1.6;
+  }
+}
+
+const ford = new CarCl('Ford', 120);
+
+ford.speedUS;
+
+//OBJECT.CREATE
+
+const objTestProto = {
+  greet: function () {
+    console.log('Hello my friend, How are you?');
+  },
+
+  credentials: function (name, age) {
+    this.name = name;
+    this.age = age;
+  },
+};
+
+const jonas = Object.create(objTestProto);
+
+jonas.credentials('Jonas', 32);
+
+jonas.greet();
+
+//CLASSES INHERITANCE
+
+const Person = function (firstName, birthYear) {};
