@@ -396,6 +396,6 @@ const Clerk = function (lname, birthYear, shift) {
   this.shift = shift;
 };
 
-Clerk.prototype = Worker.prototype.__proto__;
+Clerk.prototype = Object.create(Worker.prototype);
 
-console.log(Clerk.prototype === Worker.prototype.__proto__);
+console.log(Clerk.prototype.__proto__ === Worker.prototype);
