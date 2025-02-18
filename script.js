@@ -345,9 +345,13 @@ const EmployeeCl = class {
     this.age = age;
   }
 
-  //Prototype methods
+  //instances methods
   get wipe() {
     console.log(`${this.firstName} is wiping the floor.`);
+  }
+  //static methods
+  static dive() {
+    console.log(`Employee dives.`);
   }
 };
 
@@ -360,4 +364,4 @@ EmployeeCl.greet = function () {
   console.log('Hello, I am the constructor');
 };
 
-console.log(mellow.greet);
+EmployeeCl.dive();
