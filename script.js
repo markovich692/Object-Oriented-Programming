@@ -382,5 +382,20 @@ const objProto = {
 //Links the nathan object .__proto__ property to the objProto object
 const nathan = Object.create(objProto);
 
-nathan.infos('Nathan', 16);
-nathan.calcAge();
+// nathan.infos('Nathan', 16);
+// nathan.calcAge();
+
+const Worker = function (lname, birthYear) {
+  this.lname = lname;
+  this.birthYear = birthYear;
+};
+
+const Clerk = function (lname, birthYear, shift) {
+  //Sets the this to empty Clerk Object
+  Worker.call(this, lname, birthYear);
+  this.shift = shift;
+};
+
+Clerk.prototype = Worker.prototype.__proto__;
+
+console.log(Clerk.prototype === Worker.prototype.__proto__);
