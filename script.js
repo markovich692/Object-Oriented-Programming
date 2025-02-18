@@ -256,7 +256,7 @@ class CarCl {
 
   //Getter that returns the speed in mi/h
   get speedUS() {
-    console.log(this.speed / 1.6);
+    // console.log(this.speed / 1.6);
   }
 
   set speedUS(speed) {
@@ -270,10 +270,9 @@ const ford = new CarCl('Ford', 120);
 ford.speedUS;
 
 //OBJECT.CREATE
-
 const objTestProto = {
   greet: function () {
-    console.log('Hello my friend, How are you?');
+    // console.log('Hello my friend, How are you?');
   },
 
   credentials: function (name, age) {
@@ -290,29 +289,52 @@ jonas.greet();
 
 //CLASSES INHERITANCE
 
-const Person = function (firstName, birthYear) {
+// const Person = function (firstName, birthYear) {
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
+// };
+
+// Person.prototype.calcAge = function () {
+//   console.log(`${2037 - this.birthYear}`);
+// };
+
+// const Student = function (firstName, birthYear, course) {
+//   Person.call(this, firstName, birthYear);
+//   this.course = course;
+// };
+
+// //Links the Student class to the Parent class
+// Student.prototype = Object.create(Person.prototype);
+
+// // console.log(Student.prototype);
+
+// Student.prototype.introduce = function () {
+//   console.log(`My name is ${this.firstName} and I am in ${this.course}.`);
+// };
+
+// const bill = new Student('Bill', 1999, 'Computer science');
+// bill.introduce();
+
+// bill.calcAge();
+
+const Employee = function (firstName, age) {
   this.firstName = firstName;
-  this.birthYear = birthYear;
+  this.age = age;
+  //This will be carried on all instances--not good for performance
+  // this.introduction = function () {
+  //   console.log(`My name is ${this.firstName} and I am ${age} years old.`);
+  // };
 };
 
-Person.prototype.calcAge = function () {
-  console.log(`${2037 - this.birthYear}`);
+//Defines the introduction method on the prototype property of EMployee constructor
+//--Better for performance--
+Employee.prototype.introduction = function () {
+  console.log(`My name is ${this.firstName} and I am ${age} years old.`);
 };
 
-const Student = function (firstName, birthYear, course) {
-  Person.call(this, firstName, birthYear);
-  this.course = course;
-};
+const henry = new Employee('Henry', 33);
+const francesca = new Employee('Francesca', 23);
+const filipe = new Employee('Filipe', 32);
 
-Student.prototype = Object.create(Person.prototype);
-
-// console.log(Student.prototype);
-
-Student.prototype.introduce = function () {
-  console.log(`My name is ${this.firstName} and I am in ${this.course}.`);
-};
-
-const bill = new Student('Bill', 1999, 'Computer science');
-bill.introduce();
-
-bill.calcAge();
+// console.log(henry.__proto__ === Employee.prototype);
+// console.log(Employee.prototype.__proto__.hasOwnProperty('hasOwnProperty'));
