@@ -383,3 +383,4 @@ const objProto = {
 const nathan = Object.create(objProto);
 
 nathan.infos('Nathan', 16);
+nathan.calcAge();
