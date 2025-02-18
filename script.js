@@ -453,7 +453,15 @@ Car.prototype.accelerate = function () {
   this.speed = this.speed + 20;
   this.charge = this.charge - 1;
   console.log(
-    `${this.make} going at ${this.speed} with a charge of ${this.charge}%.`
+    `${this.make} going at ${this.speed}km/h with a charge of ${this.charge}%.`
+  );
+};
+
+Car.prototype.brake = function () {
+  this.speed = this.speed - 5;
+  // this.charge = this.charge - 1;
+  console.log(
+    `${this.make} going at ${this.speed}km/h with a charge of ${this.charge}%.`
   );
 };
 
@@ -462,3 +470,5 @@ console.log(volvo);
 
 volvo.accelerate();
 volvo.accelerate();
+volvo.brake();
+volvo.brake();
