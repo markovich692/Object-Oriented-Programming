@@ -346,7 +346,18 @@ const EmployeeCl = class {
   }
 
   //Prototype methods
-  wipe() {
+  get wipe() {
     console.log(`${this.firstName} is wiping the floor.`);
   }
 };
+
+const mellow = new EmployeeCl('Mellow', 16);
+
+console.log(EmployeeCl.prototype === mellow.__proto__);
+
+//Set a static method on the EmployeeCl class
+EmployeeCl.greet = function () {
+  console.log('Hello, I am the constructor');
+};
+
+console.log(mellow.greet);
