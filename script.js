@@ -304,3 +304,6 @@ const Student = function (firstName, birthYear, course) {
 Student.prototype.introduce = function () {
   console.log(`My name is ${this.firstName} and I am a ${this.course}.`);
 };
+
+const bill = new Student('Bill', 1999, 'Computer science');
+console.log(bill);
