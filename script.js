@@ -295,15 +295,24 @@ const Person = function (firstName, birthYear) {
   this.birthYear = birthYear;
 };
 
+Person.prototype.calcAge = function () {
+  console.log(`${2037 - this.birthYear}`);
+};
+
 const Student = function (firstName, birthYear, course) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+  Person.call(this, firstName, birthYear);
   this.course = course;
 };
 
+Student.prototype = Object.create(Person.prototype);
+
+// console.log(Student.prototype);
+
 Student.prototype.introduce = function () {
-  console.log(`My name is ${this.firstName} and I am a ${this.course}.`);
+  console.log(`My name is ${this.firstName} and I am in ${this.course}.`);
 };
 
 const bill = new Student('Bill', 1999, 'Computer science');
-console.log(bill);
+bill.introduce();
+
+bill.calcAge();
