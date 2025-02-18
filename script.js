@@ -300,3 +300,7 @@ const Student = function (firstName, birthYear, course) {
   this.birthYear = birthYear;
   this.course = course;
 };
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I am a ${this.course}.`);
+};
