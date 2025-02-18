@@ -339,4 +339,14 @@ const filipe = new Employee('Filipe', 32);
 // console.log(henry.__proto__ === Employee.prototype);
 // console.log(Employee.prototype.__proto__.hasOwnProperty('hasOwnProperty'));
 
-class EmployeeCl {}
+const EmployeeCl = class {
+  constructor(firstName, age) {
+    this.firstName = firstName;
+    this.age = age;
+  }
+
+  //Prototype methods
+  wipe() {
+    console.log(`${this.firstName} is wiping the floor.`);
+  }
+};
