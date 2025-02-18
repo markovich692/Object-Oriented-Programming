@@ -290,4 +290,13 @@ jonas.greet();
 
 //CLASSES INHERITANCE
 
-const Person = function (firstName, birthYear) {};
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+const Student = function (firstName, birthYear, course) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+  this.course = course;
+};
