@@ -357,11 +357,29 @@ const EmployeeCl = class {
 
 const mellow = new EmployeeCl('Mellow', 16);
 
-console.log(EmployeeCl.prototype === mellow.__proto__);
+// console.log(EmployeeCl.prototype === mellow.__proto__);
 
 //Set a static method on the EmployeeCl class
 EmployeeCl.greet = function () {
-  console.log('Hello, I am the constructor');
+  // console.log('Hello, I am the constructor');
 };
 
 EmployeeCl.dive();
+
+//Object.create
+
+const objProto = {
+  infos(fName, age) {
+    this.fName = fName;
+    this.age = age;
+  },
+
+  calcAge: function () {
+    console.log(`My name is ${this.fName} and I am ${this.age} years old.`);
+  },
+};
+
+//Links the nathan object .__proto__ property to the objProto object
+const nathan = Object.create(objProto);
+
+nathan.infos('Nathan', 16);
