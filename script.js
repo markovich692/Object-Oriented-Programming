@@ -476,3 +476,10 @@ volvo.accelerate();
 //execute the first accelerate method in the prototype chain
 
 //Inheritance between Classes using ES6 CLASSES
+
+const PlayerCl = class {
+  constructor(name, birthYear) {
+    this.name = name;
+    this.birthYear = birthYear;
+  }
+};
