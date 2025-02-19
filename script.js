@@ -430,6 +430,18 @@ const Car = function (make, speed) {
   this.speed = speed;
 };
 
+// Implements the accelerate method
+Car.prototype.accelerate = function () {
+  this.speed = this.speed + 10;
+  console.log(`${this.make} going at ${this.speed}km/h`);
+};
+
+// Implements the brake method
+Car.prototype.brake = function () {
+  this.speed = this.speed - 5;
+  console.log(`${this.make} going at ${this.speed}km/h`);
+};
+
 const EV = function (make, speed, charge) {
   Car.call(this, make, speed);
 
@@ -441,25 +453,13 @@ EV.prototype = Object.create(Car.prototype);
 
 const volvo = new EV('Volvo', 120, 26);
 
-Car.prototype.chargeBattery = function (chargeTo) {
+EV.prototype.chargeBattery = function (chargeTo) {
   this.charge = `${chargeTo}`;
 };
 
-// console.log(EV.prototype.__proto__ === Car.prototype);
-
-console.log(volvo);
-
-Car.prototype.accelerate = function () {
+EV.prototype.accelerate = function () {
   this.speed = this.speed + 20;
   this.charge = this.charge - 1;
-  console.log(
-    `${this.make} going at ${this.speed}km/h with a charge of ${this.charge}%.`
-  );
-};
-
-Car.prototype.brake = function () {
-  this.speed = this.speed - 5;
-  // this.charge = this.charge - 1;
   console.log(
     `${this.make} going at ${this.speed}km/h with a charge of ${this.charge}%.`
   );
@@ -470,5 +470,9 @@ console.log(volvo);
 
 volvo.accelerate();
 volvo.accelerate();
-volvo.brake();
-volvo.brake();
+
+//Note that here we have two accelerate methods, one on the Car.prototype property and
+//the other one on the EV.prototype property and calling it on the volvo object will
+//execute the first accelerate method in the prototype chain
+
+//Inheritance between Classes using ES6 CLASSES
