@@ -270,22 +270,22 @@ const ford = new CarCl('Ford', 120);
 ford.speedUS;
 
 //OBJECT.CREATE
-const objTestProto = {
-  greet: function () {
-    // console.log('Hello my friend, How are you?');
-  },
+// const objTestProto = {
+//   greet: function () {
+//     // console.log('Hello my friend, How are you?');
+//   },
 
-  credentials: function (name, age) {
-    this.name = name;
-    this.age = age;
-  },
-};
+//   credentials: function (name, age) {
+//     this.name = name;
+//     this.age = age;
+//   },
+// };
 
-const jonas = Object.create(objTestProto);
+// const jonas = Object.create(objTestProto);
 
-jonas.credentials('Jonas', 32);
+// jonas.credentials('Jonas', 32);
 
-jonas.greet();
+// jonas.greet();
 
 //CLASSES INHERITANCE
 
@@ -503,9 +503,20 @@ class PersonCl {
 class StudentCl extends PersonCl {
   constructor(fullName, birthYear, course) {
     //calls the parent constructor to inherit already defined properties
-    //Always needs to happen first--allows the this to be initialized
+    //Always needs to happen first--allows the this to be initialized--
     super(fullName, birthYear);
+    this.course = course;
+  }
+
+  greet() {
+    console.log('Hello, world!');
   }
 }
 
-// const raditz = new PersonCl('Raditz Saiyan', 1993);
+const raditz = new StudentCl('Raditz Saiyan', 1993, 'Computer Science');
+
+raditz.fullName;
+console.log(raditz.fullName);
+raditz.greet();
+
+//Inheritance between CLASSES using Object.create
