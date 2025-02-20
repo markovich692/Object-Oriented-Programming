@@ -83,42 +83,42 @@ arr.unique();
 // car2.brake();
 
 //Class declaration
-class PersonCl {
-  constructor(fullName, birthYear) {
-    this.fullName = fullName;
-    this.birthYear = birthYear;
-  }
+// class PersonCl {
+//   constructor(fullName, birthYear) {
+//     this.fullName = fullName;
+//     this.birthYear = birthYear;
+//   }
 
-  calcAge = function () {
-    console.log(2037 - this.birthYear);
-  };
+//   calcAge = function () {
+//     console.log(2037 - this.birthYear);
+//   };
 
-  get age() {
-    return 2037 - this.birthYear;
-  }
+//   get age() {
+//     return 2037 - this.birthYear;
+//   }
 
-  set fullName(name) {
-    if (name.includes(' ')) this._fullName = name;
-    else alert('Try again');
-  }
-}
+//   set fullName(name) {
+//     if (name.includes(' ')) this._fullName = name;
+//     else alert('Try again');
+//   }
+// }
 
-const jessica = new PersonCl('Jessica Lyn', 1996);
-// console.log(jessica);
+// const jessica = new PersonCl('Jessica Lyn', 1996);
+// // console.log(jessica);
 
-const account = {
-  owner: 'Jonas',
-  movements: [200, 150, 20, 400],
-  get latest() {
-    return this.movements.slice(-1).at(0);
-  },
+// const account = {
+//   owner: 'Jonas',
+//   movements: [200, 150, 20, 400],
+//   get latest() {
+//     return this.movements.slice(-1).at(0);
+//   },
 
-  set latest(mov) {
-    return this.movements.push(mov);
-  },
-};
+//   set latest(mov) {
+//     return this.movements.push(mov);
+//   },
+// };
 
-account.latest = 50;
+// account.latest = 50;
 // console.log(account);
 
 // console.log([1, 1, 3].includes(3), 'marc'.includes('b'));
@@ -460,13 +460,13 @@ EV.prototype.chargeBattery = function (chargeTo) {
 EV.prototype.accelerate = function () {
   this.speed = this.speed + 20;
   this.charge = this.charge - 1;
-  console.log(
-    `${this.make} going at ${this.speed}km/h with a charge of ${this.charge}%.`
-  );
+  // console.log(
+  //   `${this.make} going at ${this.speed}km/h with a charge of ${this.charge}%.`
+  // );
 };
 
 volvo.chargeBattery(50);
-console.log(volvo);
+// console.log(volvo);
 
 volvo.accelerate();
 volvo.accelerate();
@@ -477,9 +477,28 @@ volvo.accelerate();
 
 //Inheritance between Classes using ES6 CLASSES
 
-const PlayerCl = class {
-  constructor(name, birthYear) {
-    this.name = name;
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
-};
+
+  calcAge = function () {
+    console.log(2037 - this.birthYear);
+  };
+
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert('Try again');
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+}
+
+//Child Class of PersonCl Class
+
+class StudentCl extends PersonCl {}
+
+// const raditz = new PersonCl('Raditz Saiyan', 1993);
