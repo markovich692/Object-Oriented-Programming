@@ -561,12 +561,22 @@ const Account = class {
     this.movements = [];
   }
 
+  //Public Interface
   deposit(value) {
     this.movements.push(value);
   }
 
   withdrawal(value) {
     this.deposit(-value);
+  }
+
+  approveLoan(value) {
+    return true;
+  }
+
+  requestLoan(value) {
+    if (this.approveLoan(value)) this.deposit(value);
+    console.log('Loan approved');
   }
 };
 
@@ -577,4 +587,6 @@ console.log(acc1);
 acc1.deposit(34);
 acc1.withdrawal(100);
 acc1.deposit(700);
+
+acc1.requestLoan(100);
 console.log(acc1);
