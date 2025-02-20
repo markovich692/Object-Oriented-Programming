@@ -537,17 +537,31 @@ const IndividualProto = {
 const PupilProto = Object.create(IndividualProto);
 
 const marvin = Object.create(PupilProto);
-marvin.credentials('Marvin', 36);
 
-//Adds a init method to PupilProto
-PupilProto.credentials = function (name, age) {
-  this.name = name;
-  this.age = age;
+//Adds the credentials method to PupilProto
+PupilProto.credentials = function (name, age, course) {
+  IndividualProto.credentials.call(this, name, age);
+  this.course = course;
 };
 
-console.log(PupilProto);
+// console.log(PupilProto);
 // console.log(jonas.__proto__ === objTestProto);
 
-marvin.credentials('John', 36);
-marvin.greet();
-console.log(marvin);
+marvin.credentials('John', 36, 'Physics');
+// marvin.greet();
+// console.log(marvin);
+
+//More about CLASSES
+
+const Account = class {
+  constructor(owner, currency, pin, movements) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = movements;
+  }
+};
+
+const acc1 = new Account('Bob', 'Euros', 2345, [200, 200, 300]);
+
+console.log(acc1.movements);
