@@ -536,8 +536,18 @@ const IndividualProto = {
 //Links the IndividualProto to PupilProto prototype
 const PupilProto = Object.create(IndividualProto);
 
+const marvin = Object.create(PupilProto);
+marvin.credentials('Marvin', 36);
+
+//Adds a init method to PupilProto
+PupilProto.credentials = function (name, age) {
+  this.name = name;
+  this.age = age;
+};
+
+console.log(PupilProto);
 // console.log(jonas.__proto__ === objTestProto);
 
-const john = Object.create(PupilProto);
-
-console.log(john.__proto__.__proto__);
+marvin.credentials('John', 36);
+marvin.greet();
+console.log(marvin);
