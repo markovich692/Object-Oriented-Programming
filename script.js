@@ -516,7 +516,28 @@ class StudentCl extends PersonCl {
 const raditz = new StudentCl('Raditz Saiyan', 1993, 'Computer Science');
 
 raditz.fullName;
-console.log(raditz.fullName);
-raditz.greet();
+// console.log(raditz.fullName);
+// raditz.greet();
 
 //Inheritance between CLASSES using Object.create
+const IndividualProto = {
+  greet: function () {
+    console.log('Hello my friend, How are you?');
+  },
+
+  credentials: function (name, age) {
+    this.name = name;
+    this.age = age;
+  },
+};
+
+// console.log(objTestProto);
+
+//Links the IndividualProto to PupilProto prototype
+const PupilProto = Object.create(IndividualProto);
+
+// console.log(jonas.__proto__ === objTestProto);
+
+const john = Object.create(PupilProto);
+
+console.log(john.__proto__.__proto__);
