@@ -554,14 +554,23 @@ marvin.credentials('John', 36, 'Physics');
 //More about CLASSES
 
 const Account = class {
-  constructor(owner, currency, pin, movements) {
+  constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     this.pin = pin;
-    this.movements = movements;
+    this.movements = [];
+  }
+
+  addMovements(value) {
+    this.movements.push(value);
   }
 };
 
-const acc1 = new Account('Bob', 'Euros', 2345, [200, 200, 300]);
+const acc1 = new Account('Bob', 'Euros', 2345);
 
-console.log(acc1.movements);
+console.log(acc1);
+
+acc1.addMovements(34);
+acc1.addMovements(100);
+acc1.addMovements(700);
+console.log(acc1);
