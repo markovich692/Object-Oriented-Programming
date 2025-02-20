@@ -561,8 +561,12 @@ const Account = class {
     this.movements = [];
   }
 
-  addMovements(value) {
+  deposit(value) {
     this.movements.push(value);
+  }
+
+  withdrawal(value) {
+    this.deposit(-value);
   }
 };
 
@@ -570,7 +574,7 @@ const acc1 = new Account('Bob', 'Euros', 2345);
 
 console.log(acc1);
 
-acc1.addMovements(34);
-acc1.addMovements(100);
-acc1.addMovements(700);
+acc1.deposit(34);
+acc1.withdrawal(100);
+acc1.deposit(700);
 console.log(acc1);
