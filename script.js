@@ -499,6 +499,13 @@ class PersonCl {
 
 //Child Class of PersonCl Class
 
-class StudentCl extends PersonCl {}
+//extends links the child prototype to the parent prototype
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    //calls the parent constructor to inherit already defined properties
+    //Always needs to happen first--allows the this to be initialized
+    super(fullName, birthYear);
+  }
+}
 
 // const raditz = new PersonCl('Raditz Saiyan', 1993);
