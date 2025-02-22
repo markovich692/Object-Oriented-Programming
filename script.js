@@ -557,17 +557,18 @@ class Account {
   locale = navigator.language;
   bank = 'bankist';
   #movements = [];
+  #pin;
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
-    this.pin = pin;
+    this.#pin = pin;
     // this.movements = [];
     // this.locale = navigator.language;
   }
 
   //Public Interface
   deposit(value) {
-    this.movements.push(value);
+    this.#movements.push(value);
   }
 
   withdrawal(value) {
@@ -585,6 +586,12 @@ class Account {
 }
 
 const acc1 = new Account('Bob', 'Euros', 1111);
+
+console.log(acc1);
+acc1.deposit(400);
+acc1.deposit(300);
+acc1.deposit(100);
+console.log(acc1.pin);
 
 // console.log(acc1.__proto__ === Account.prototype);
 
