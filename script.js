@@ -566,7 +566,12 @@ class Account {
     // this.locale = navigator.language;
   }
 
-  //Public Interface
+  //Public Interface (API)
+
+  getMovements() {
+    return this.#movements;
+  }
+
   deposit(value) {
     this.#movements.push(value);
   }
@@ -591,7 +596,7 @@ console.log(acc1);
 acc1.deposit(400);
 acc1.deposit(300);
 acc1.deposit(100);
-console.log(acc1.pin);
+console.log(acc1.getMovements());
 
 // console.log(acc1.__proto__ === Account.prototype);
 
