@@ -553,12 +553,16 @@ marvin.credentials('John', 36, 'Physics');
 
 //More about CLASSES
 
-const Account = class {
+class Account {
+  locale = navigator.language;
+  bank = 'bankist';
+  #movements = [];
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     this.pin = pin;
-    this.movements = [];
+    // this.movements = [];
+    // this.locale = navigator.language;
   }
 
   //Public Interface
@@ -578,15 +582,33 @@ const Account = class {
     if (this.approveLoan(value)) this.deposit(value);
     console.log('Loan approved');
   }
-};
+}
 
-const acc1 = new Account('Bob', 'Euros', 2345);
+const acc1 = new Account('Bob', 'Euros', 1111);
 
-console.log(acc1);
+// console.log(acc1.__proto__ === Account.prototype);
 
-acc1.deposit(34);
-acc1.withdrawal(100);
-acc1.deposit(700);
+// const Athlete = {
+//   init(name, birthYear) {
+//     this.name = name;
 
-acc1.requestLoan(100);
-console.log(acc1);
+//     this.birthYear = birthYear;
+//   },
+
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   },
+// };
+
+// const Runner = Object.create(Athlete);
+
+// Runner.init = function (name, birthYear, sport) {
+//   Athlete.init.call(this, name, birthYear);
+//   this.sport = sport;
+// };
+
+// const bolt = Object.create(Runner);
+
+// bolt.init('Bolt', 1988, 'run');
+
+// console.log(bolt);
