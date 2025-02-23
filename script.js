@@ -658,7 +658,8 @@ class CarCl {
 
   brake() {
     this.speed -= 5;
-    console.log(`${this.make} going at ${this.speed}.`);
+    console.log(`${this.make} going at ${this.speed}km/h.`);
+    return this;
   }
 }
 
@@ -674,14 +675,22 @@ class EVCl extends CarCl {
     this.speed += 20;
     this.charge--;
     console.log(
-      `${this.make} going at ${this.speed}km/h, with a charge of ${this.charge}%.`
+      `${this.make} going at ${this.speed}km/h, with a charge of ${
+        this.#charge
+      }%.`
     );
+    return this;
   }
 
   chargeBattery(chargeTo) {
     this.charge = chargeTo;
+    return this;
   }
 }
+
+const jeep = new EVCl('Jeep', 60, 15);
+
+jeep.accelerate().brake().chargeBattery();
 
 // const EV = function (make, speed, charge) {
 //   Car.call(this, make, speed);
@@ -702,8 +711,6 @@ class EVCl extends CarCl {
 //     `${this.make} going at ${this.speed}km/h, with a charge of ${this.charge}%.`
 //   );
 // };
-
-// const jeep = new EV('Jeep', 60, 15);
 
 // console.log(jeep);
 
