@@ -574,10 +574,12 @@ class Account {
 
   deposit(value) {
     this.#movements.push(value);
+    return this;
   }
 
   withdrawal(value) {
     this.deposit(-value);
+    return this;
   }
 
   #approveLoan(value) {
@@ -587,6 +589,7 @@ class Account {
   requestLoan(value) {
     if (this.#approveLoan(value)) this.deposit(value);
     console.log('Loan approved');
+    return this;
   }
 }
 
@@ -626,6 +629,6 @@ console.log(acc1.getMovements());
 // console.log(bolt);
 
 //CHAINING METHODS
-acc1.deposit(300).withdrawal(150).requestLoan(300);
+acc1.deposit(300).withdrawal(150).deposit(200).requestLoan(300);
 
 console.log(acc1);
