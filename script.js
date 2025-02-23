@@ -580,12 +580,12 @@ class Account {
     this.deposit(-value);
   }
 
-  approveLoan(value) {
+  #approveLoan(value) {
     return true;
   }
 
   requestLoan(value) {
-    if (this.approveLoan(value)) this.deposit(value);
+    if (this.#approveLoan(value)) this.deposit(value);
     console.log('Loan approved');
   }
 }
@@ -593,9 +593,9 @@ class Account {
 const acc1 = new Account('Bob', 'Euros', 1111);
 
 console.log(acc1);
-acc1.deposit(400);
-acc1.deposit(300);
-acc1.deposit(100);
+// acc1.deposit(400);
+// acc1.deposit(300);
+// acc1.deposit(100);
 console.log(acc1.getMovements());
 
 // console.log(acc1.__proto__ === Account.prototype);
@@ -624,3 +624,8 @@ console.log(acc1.getMovements());
 // bolt.init('Bolt', 1988, 'run');
 
 // console.log(bolt);
+
+//CHAINING METHODS
+acc1.deposit(300).withdrawal(150).requestLoan(300);
+
+console.log(acc1);
