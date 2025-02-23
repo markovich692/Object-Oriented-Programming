@@ -236,38 +236,38 @@ jerry.calcAge();
 // Test data:
 // § Data car 1: 'Ford' going at 120 km/h
 
-class CarCl {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
+// class CarCl {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
 
-  // Implements the accelerate method
-  accelerate() {
-    this.speed = this.speed + 10;
-    console.log(`${this.make} going at ${this.speed}km/h`);
-  }
+//   // Implements the accelerate method
+//   accelerate() {
+//     this.speed = this.speed + 10;
+//     console.log(`${this.make} going at ${this.speed}km/h`);
+//   }
 
-  //Implements the break property
-  brake() {
-    this.speed = this.speed - 5;
-    console.log(`${this.make} going at ${this.speed}km/h`);
-  }
+//   //Implements the break property
+//   brake() {
+//     this.speed = this.speed - 5;
+//     console.log(`${this.make} going at ${this.speed}km/h`);
+//   }
 
-  //Getter that returns the speed in mi/h
-  get speedUS() {
-    // console.log(this.speed / 1.6);
-  }
+//   //Getter that returns the speed in mi/h
+//   get speedUS() {
+//     // console.log(this.speed / 1.6);
+//   }
 
-  set speedUS(speed) {
-    //Converts the spped from US mi/h to Km/h and sets it
-    this.speed = speed * 1.6;
-  }
-}
+//   set speedUS(speed) {
+//     //Converts the spped from US mi/h to Km/h and sets it
+//     this.speed = speed * 1.6;
+//   }
+// }
 
-const ford = new CarCl('Ford', 120);
+// const ford = new CarCl('Ford', 120);
 
-ford.speedUS;
+// ford.speedUS;
 
 //OBJECT.CREATE
 // const objTestProto = {
@@ -425,51 +425,51 @@ Worker.prototype.calcAge = function () {
 // § Data car 1: 'Tesla' going at 120 km/h, with a charge of 23%
 // GOOD LUCK 😀
 
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-};
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
 
-// Implements the accelerate method
-Car.prototype.accelerate = function () {
-  this.speed = this.speed + 10;
-  console.log(`${this.make} going at ${this.speed}km/h`);
-};
+// // Implements the accelerate method
+// Car.prototype.accelerate = function () {
+//   this.speed = this.speed + 10;
+//   console.log(`${this.make} going at ${this.speed}km/h`);
+// };
 
-// Implements the brake method
-Car.prototype.brake = function () {
-  this.speed = this.speed - 5;
-  console.log(`${this.make} going at ${this.speed}km/h`);
-};
+// // Implements the brake method
+// Car.prototype.brake = function () {
+//   this.speed = this.speed - 5;
+//   console.log(`${this.make} going at ${this.speed}km/h`);
+// };
 
-const EV = function (make, speed, charge) {
-  Car.call(this, make, speed);
+// const EV = function (make, speed, charge) {
+//   Car.call(this, make, speed);
 
-  this.charge = `${charge}`;
-};
+//   this.charge = `${charge}`;
+// };
 
-//Links the child EV class to the parent Car class
-EV.prototype = Object.create(Car.prototype);
+// //Links the child EV class to the parent Car class
+// EV.prototype = Object.create(Car.prototype);
 
-const volvo = new EV('Volvo', 120, 26);
+// const volvo = new EV('Volvo', 120, 26);
 
-EV.prototype.chargeBattery = function (chargeTo) {
-  this.charge = `${chargeTo}`;
-};
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.charge = `${chargeTo}`;
+// };
 
-EV.prototype.accelerate = function () {
-  this.speed = this.speed + 20;
-  this.charge = this.charge - 1;
-  // console.log(
-  //   `${this.make} going at ${this.speed}km/h with a charge of ${this.charge}%.`
-  // );
-};
+// EV.prototype.accelerate = function () {
+//   this.speed = this.speed + 20;
+//   this.charge = this.charge - 1;
+//   // console.log(
+//   //   `${this.make} going at ${this.speed}km/h with a charge of ${this.charge}%.`
+//   // );
+// };
 
-volvo.chargeBattery(50);
-// console.log(volvo);
+// volvo.chargeBattery(50);
+// // console.log(volvo);
 
-volvo.accelerate();
-volvo.accelerate();
+// volvo.accelerate();
+// volvo.accelerate();
 
 //Note that here we have two accelerate methods, one on the Car.prototype property and
 //the other one on the EV.prototype property and calling it on the volvo object will
@@ -642,3 +642,51 @@ const movements = acc1
   .getMovements();
 
 console.log(movements);
+
+//Challenge 4
+
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} going at ${this.speed}.`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} going at ${this.speed}.`);
+  }
+}
+
+// const EV = function (make, speed, charge) {
+//   Car.call(this, make, speed);
+
+//   this.charge = charge;
+// };
+
+// EV.prototype = Object.create(Car.prototype);
+
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.charge = chargeTo;
+// };
+
+// EV.prototype.accelerate = function () {
+//   this.speed += 20;
+//   this.charge--;
+//   console.log(
+//     `${this.make} going at ${this.speed}km/h, with a charge of ${this.charge}%.`
+//   );
+// };
+
+// const jeep = new EV('Jeep', 60, 15);
+
+// console.log(jeep);
+
+// jeep.chargeBattery(90);
+// jeep.accelerate();
+// jeep.accelerate();
+// jeep.accelerate();
