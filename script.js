@@ -570,6 +570,7 @@ class Account {
 
   getMovements() {
     return this.#movements;
+    //Not chainable
   }
 
   deposit(value) {
@@ -587,8 +588,12 @@ class Account {
   }
 
   requestLoan(value) {
-    if (this.#approveLoan(value)) this.deposit(value);
-    console.log('Loan approved');
+    if (this.#approveLoan(value)) {
+      this.deposit(value);
+
+      console.log('Loan approved');
+    }
+
     return this;
   }
 }
