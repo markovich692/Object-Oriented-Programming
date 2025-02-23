@@ -634,6 +634,11 @@ console.log(acc1.getMovements());
 // console.log(bolt);
 
 //CHAINING METHODS
-acc1.deposit(300).withdrawal(150).deposit(200).requestLoan(300);
+const movements = acc1
+  .deposit(300)
+  .withdrawal(150)
+  .deposit(200)
+  .requestLoan(300)
+  .getMovements();
 
-console.log(acc1);
+console.log(movements);
